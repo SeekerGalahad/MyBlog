@@ -37,7 +37,7 @@ CREATE TABLE `t_comments` (
   PRIMARY KEY (`coid`) USING BTREE,
   KEY `cid` (`cid`) USING BTREE,
   KEY `created` (`created`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '文章评论表';
 
 -- ----------------------------
 -- Records of t_comments
@@ -69,7 +69,7 @@ CREATE TABLE `t_contents` (
   PRIMARY KEY (`cid`) USING BTREE,
   UNIQUE KEY `slug` (`slug`) USING BTREE,
   KEY `created` (`created`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '文章表';
 
 -- ----------------------------
 -- Records of t_contents
@@ -88,7 +88,7 @@ CREATE TABLE `t_logs` (
   `ip` varchar(20) DEFAULT NULL COMMENT 'ip地址',
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '操作日志表';
 
 -- ----------------------------
 -- Records of t_logs
@@ -120,7 +120,7 @@ CREATE TABLE `t_metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`) USING BTREE,
   KEY `slug` (`slug`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '元数据表';
 
 -- ----------------------------
 -- Records of t_metas
@@ -138,7 +138,7 @@ CREATE TABLE `t_options` (
   `value` varchar(1000) DEFAULT '',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '配置表';
 
 -- ----------------------------
 -- Records of t_options
@@ -164,7 +164,7 @@ CREATE TABLE `t_relationships` (
   `cid` int(10) unsigned NOT NULL,
   `mid` int(10) unsigned NOT NULL,
   PRIMARY KEY (`cid`,`mid`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '文章与元数据关联表';
 
 -- ----------------------------
 -- Records of t_relationships
@@ -205,7 +205,7 @@ CREATE TABLE `t_users` (
   PRIMARY KEY (`uid`) USING BTREE,
   UNIQUE KEY `name` (`username`) USING BTREE,
   UNIQUE KEY `mail` (`email`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT '用户表';
 
 -- ----------------------------
 -- Records of t_users
