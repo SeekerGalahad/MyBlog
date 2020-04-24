@@ -74,7 +74,7 @@ public class BaseInterceptor implements HandlerInterceptor {
         if (null == user) {
             Integer uid = TaleUtils.getCookieUid(request);
             if (null != uid) {
-                //这里还是有安全隐患,cookie是可以伪造的
+                // 有安全隐患,cookie是可以伪造的
                 user = userService.getUserInfoById(uid);
                 request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, user);
             }
@@ -93,7 +93,8 @@ public class BaseInterceptor implements HandlerInterceptor {
             String csrf_token = UUID.UU64();
             // 默认存储30分钟
             cache.hset(Types.CSRF_TOKEN.getType(), csrf_token, uri, 30 * 60);
-            request.setAttribute("_csrf_token", csrf_token);
+            request.setAttribute("" +
+                "", csrf_token);
         }
         // 返回true才会执行postHandle
         return true;

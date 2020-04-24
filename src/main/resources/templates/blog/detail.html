@@ -47,50 +47,53 @@
                 </div>
             </div>
         </div>
-        <div class="comments" id="comments" style="opacity: 1; display: block;">
-            <div id="comments-content" class="segment">
-                <h3 class="dividing">评论</h3>
-                <th:block th:if="${comments}">
-                    <div th:each="comment : ${comments}" class="comment">
-                        <a class="avatar">
-                            <img th:src="@{/blog/image/avatar.png}">
-                        </a>
-                        <div class="content">
-                            <a th:href="${comment.url}" target="_blank" class="author">
-                                <span th:text="${comment.author}"></span>
+        <div class="comment" id="commentArea">
+            <h1 class="post-title" itemprop="name headline">评论区</h1>
+            <div class="comments" id="comments" style="opacity: 1; display: block;">
+                <div id="comments-content" class="segment">
+                    <h3 class="dividing">评论</h3>
+                    <th:block th:if="${comments}">
+                        <div th:each="comment : ${comments}" class="comment">
+                            <a class="avatar">
+                                <img th:src="@{/blog/image/avatar.png}">
                             </a>
-                            <div class="metadata">
+                            <div class="content">
+                                <a th:href="${comment.url}" target="_blank" class="author">
+                                    <span th:text="${comment.author}"></span>
+                                </a>
+                                <div class="metadata">
                                 <span class="date"
                                       th:text="${commons.fmtdate(comment.created, 'yyyy-MM-dd HH:mm')}"></span>
+                                </div>
+                                <div class="text" th:text="${comment.content}"></div>
                             </div>
-                            <div class="text" th:text="${comment.content}"></div>
                         </div>
-                    </div>
-                </th:block>
-            </div>
-            <div class="comment-form">
-                <input type="hidden" name="coid" id="coid">
-                <input type="hidden" name="cid" id="cid" th:value="${article.cid}">
-                <input type="hidden" name="_csrf_token" id="csrf_token" th:value="${_csrf_token}">
-                <div class="field">
+                    </th:block>
+                </div>
+                <div class="comment-form">
+                    <input type="hidden" name="coid" id="coid">
+                    <input type="hidden" name="cid" id="cid" th:value="${article.cid}">
+                    <input type="hidden" name="_csrf_token" id="csrf_token" th:value="${_csrf_token}">
+                    <div class="field">
                     <textarea id="comment-content" required="required" class="form-control" name="content"
                               placeholder="请输入评论信息..." cols="30" rows="7"></textarea>
-                </div>
-                <div class="fields">
-                    <div class="field">
-                        <input id="nickname" required="required" type="text" name="nickname" placeholder="姓名">
                     </div>
-                    <div class="field">
-                        <input id="email" required="required" type="email" name="email" placeholder="邮箱">
+                    <div class="fields">
+                        <div class="field">
+                            <input id="nickname" required="required" type="text" name="nickname" placeholder="姓名">
+                        </div>
+                        <div class="field">
+                            <input id="email" required="required" type="email" name="email" placeholder="邮箱">
+                        </div>
+                        <div class="field">
+                            <input id="url" type="url" name="url" placeholder="网址">
+                        </div>
                     </div>
-                    <div class="field">
-                        <input id="url" type="url" name="url" placeholder="网址">
+                    <div class="comment-button">
+                        <button onclick="commentClick()">发布</button>
                     </div>
                 </div>
-                <div class="comment-button">
-                    <button onclick="commentClick()">发布</button>
-                </div>
-            </div>
+        </div>
         </div>
     </div>
 </div>
